@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { DynamicForm }     from '../../app/forms/dynamic-form.component';
 import { QuestionService } from '../../app/forms/question.service';
+import { Router }           from '@angular/router-deprecated';
 
 @Component({
     selector: 'initial-validation-form',
@@ -12,7 +13,10 @@ import { QuestionService } from '../../app/forms/question.service';
 export class InitialValidationFormComponent {
     title: string = "Validation Form"
     questions:any[]
-      constructor(service: QuestionService) {
-    this.questions = service.getQuestions();
+      constructor(
+         private router: Router,
+         service: QuestionService
+         ) {
+    this.questions = service.getValidationQuestions();
   }
  }
